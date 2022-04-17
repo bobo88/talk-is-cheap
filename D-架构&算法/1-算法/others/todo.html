@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            // 不使用 async / await
+            A () {
+                let KKK = new Promise((resolve, reject) => {
+                    console.log(111)
+                    resolve()
+                }).then(() => {
+                    console.log(222)
+                    return ''
+                }).then((resolve, reject) => {
+                    console.log(333)
+                })
+                
+                let plusResult = KKK + 10000
+                console.log('plusResult: ', plusResult)
+            },
+            // 使用 async / await
+            async B (){
+                let res = new Promise((resolve, reject) => {
+                    console.log(111)
+                    resolve()
+                })
+                let MMM = await res.then((resolve, reject) => {
+                    console.log(222)
+                    return ''
+                })
+                let KKK = await res.then(() => {
+                    console.log(333)
+                    return 8
+                })
+
+                let plusResult = KKK + 10000
+                console.log('plusResult: ', plusResult)
+            }
+        }
+        // 执行
+        obj.A()
+        setTimeout(() => {
+            console.log('----- 分割线 --------')
+            obj.B()
+        }, 1000)
+    </script>
+</body>
+</html>

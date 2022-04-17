@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 相关标签： 数组 矩阵
+        // 给你一个大小为 m x n 的矩阵 mat ，请以对角线遍历的顺序，用一个数组返回这个矩阵中的所有元素。
+
+        // 示例 1:
+        // 给定 matrix = 
+        // [
+        //     [1,2,3],
+        //     [4,5,6],
+        //     [7,8,9]
+        // ],
+        // 输出：[1,2,4,7,5,3,6,8,9]
+
+        // 示例 2：
+        // 输入：matrix = [[1,2],[3,4]]
+        // 输出：[1,2,3,4]
+
+        let matrix = [
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ];
+        /**
+         * @param {number[][]} mat
+         * @return {number[]}
+         */
+        var findDiagonalOrder = function(matrix) {
+            // 方式一：
+            let a = []
+            // row - 列
+            let rowLength = matrix.length - 1;
+            let colLength = matrix[0].length - 1;
+            let k = 0,l = 0;
+            // 索引和：rowLength + colLength = 4
+            // 0 ---- 执行 1 次 0&0
+            // 1 ---- 执行 2 次 0&1 / 1&0
+            // 2 ---- 执行 3 次 0&2 / 1&1 / 2&0
+            // 3 ---- 执行 2 次 1&2 / 2&1
+            // 4 ---- 执行 1 次 2&2
+            // 备注： 0/1/2/3/4 中，偶数：左下 -> 右上（ 7 -> 5 -> 3 ）， 奇数：右上 -> 左下 （ 2 -> 4 )
+            for (let i = 0;i <= rowLength + colLength; i++) {
+                if (i % 2 === 0) {
+                    // 偶数： 特征是 matrix[x][y] 中 x👇 y👆
+                    for (let j = k; j >= i-l; j--) {
+                        a.push(matrix[j][i-j])
+                    }  
+                } else {
+                    // 奇数： 特征是 matrix[x][y] 中 x👆 y👇
+                    for (let j = l; j >= i-k; j--) {
+                        a.push(matrix[i-j][j])
+                    }  
+                }
+                k = k >= rowLength ? rowLength : k + 1;
+                l = l >= colLength ? colLength : l + 1;
+                console.log('#####################: ', k, l)
+            }
+            return a
+
+            // 方式二：
+            // ？？？？？
+        };
+        let result = findDiagonalOrder(matrix);
+        console.log('Result: ', result)
+       
+    </script>
+</body>
+</html>

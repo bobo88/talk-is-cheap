@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        intervals.sort((a, b) => a[0] - b[0])
+        let flatIntervals = intervals.flat();
+        let deleteIndexs = [];
+        flatIntervals.map((item, index) => {
+            let nextItem = flatIntervals[index + 1];
+            if (index%2 === 1 && nextItem && (item > nextItem || item === nextItem)) {
+                index > 0 ? deleteIndexs.push(index, index+1) : null;
+            }
+        })
+        let newIntervals = flatIntervals.filter((item, index) => {
+            return !deleteIndexs.includes(index)
+        })
+        let returnRes = []
+        newIntervals.map((item, index) => {
+            index % 2 === 0 ? (returnRes.push([newIntervals[index], newIntervals[index+1]])) : null
+        })
+        return returnRes
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 相关标签： 数组 前缀和
+        // 给你一个整数数组 nums ，请计算数组的 中心下标 。
+        // 数组 中心下标 是数组的一个下标，其左侧所有元素相加的和等于右侧所有元素相加的和。
+        // 如果中心下标位于数组最左端，那么左侧数之和视为 0 ，因为在下标的左侧不存在元素。这一点对于中心下标位于数组最右端同样适用。
+        // 如果数组有多个中心下标，应该返回 最靠近左边 的那一个。如果数组不存在中心下标，返回 -1 。
+        /**
+         * @param {number[]} nums
+         * @return {number}
+         */
+        var pivotIndex = function(nums) {
+            // [2,1,-1] ---- 0
+            // [1,2,3] ----- -1
+            
+            // 方式一：
+            // 1、
+            // 2、
+            // 3、
+            // let arr = [1, 2, 3, 4, 5, 0, 0, 7, 8]
+            let arr = [2,1,-1]
+            let targetArr = []
+            arr.map((item, index) => {
+                let prev = 0
+                let next = 0
+                arr.filter((i, k) => {
+                    return k < index
+                }).map(i => {
+                    prev += i
+                })
+                arr.filter((i, k) => {
+                    return k > index
+                }).map(i => {
+                    next += i
+                })
+                // console.log('----------- 分割线 --------------')
+                // console.log('prev：', prev)
+                // console.log('next：', next)
+                prev === next ? (targetArr.push(index)) : null
+            })
+            console.log('1 ---- targetArr: ', targetArr)
+            if (targetArr && targetArr.length > 0) {
+                return targetArr[0]
+            } else {
+                return -1
+            }
+            // 执行用时：8976 ms, 在所有 JavaScript 提交中击败了5.14%的用户
+            // 内存消耗：49.4 MB, 在所有 JavaScript 提交中击败了5.00%的用户
+            // 通过测试用例：743 / 743
+            
+            // 方式二： ------------ AAAAA --------------
+            // 1、将数组的所有元素相加得到一个和；
+            // 2、默认prev为0，next为数组的和；
+            // 3、循环遍历数组，prev递增，next递减
+            // 4、prev 与 next 相等时，表示 击中目标
+            let nums = [1, 2, 3, 4, 5, 0, 0, 7, 8]
+            let total = 0
+            let prev = 0
+            let next = 0
+            nums.map(i => {
+                total += i
+            })
+            next = total
+            let targetArr2 = []
+            nums.map((item, index) => {
+                prev += item;
+                next -= item;
+                // 判断相等时，prev不能加上当前item，所以需要做个减法
+                (prev - item) === next ? (targetArr2.push(index)) : null
+            })
+            // console.log('2 ---- targetArr2: ', targetArr2)
+            return (targetArr2 && targetArr2.length > 0) ? targetArr2[0] : -1;
+            // 执行用时：72 ms, 在所有 JavaScript 提交中击败了90.74%的用户
+            // 内存消耗：43.7 MB, 在所有 JavaScript 提交中击败了14.54%的用户
+            // 通过测试用例：743 / 743
+    
+            // 方式三： ？？？？？
+        }
+    </script>
+</body>
+</html>

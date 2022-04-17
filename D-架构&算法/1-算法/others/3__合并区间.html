@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 相关标签： 数组 排序
+        // 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。
+        // 请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
+        
+        // 示例 1：
+        // 输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
+        // 输出：[[1,6],[8,10],[15,18]]
+        // 解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+
+        // 示例 2：
+        // 输入：intervals = [[1,4],[4,5]]
+        // 输出：[[1,5]]
+        // 解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。
+
+
+        let intervals = [[1,3],[2,6],[8,10],[15,18]]
+        /**
+         * @param {number[][]} intervals
+         * @return {number[][]}
+         */
+        var merge = function(intervals) {
+            // // 方式一：
+            // // 1、将 二维数组 进行排序（按照start值来排序）
+            // // 2、遍历 二维数组。相邻两个如果区间重叠，则合并返回；不重叠，则直接返回该区间
+            // // 3、返回累加后的 二维数组（new）
+            // intervals.sort((a, b) => a[0] - b[0])
+            // return intervals.reduce((prev, cur, index) => {
+            //     // 判断有重叠： prevLast (prev最后一项) 与 cur（当前项），需要满足 prevLast_max >= cur_min
+            //     let prevLast = prev[prev.length - 1]
+            //     if (prevLast && prevLast[1] >= cur[0]) {
+            //         // 重叠的话，合并
+            //         let left = prevLast[0]
+            //         // 相邻两个数组，谁的最大值更大就取谁
+            //         let right = prevLast[1] > cur[1] ? prevLast[1] : cur[1]
+            //         prev[prev.length - 1] = [left, right]
+            //     } else {
+            //         // 不重叠，直接返回该区间
+            //         prev.push(cur)
+            //     }
+            //     return prev
+            // }, []);
+    
+            // // 方式二： reduce的map方式
+            // intervals.sort((a, b) => a[0] - b[0])
+            // let newIntervals = []
+            // intervals.map(cur => {
+            //     let index = newIntervals.length - 1
+            //     let last = newIntervals[index]
+            //     if (last && last[1] >= cur[0]) {
+            //         let left = last[0]
+            //         let right = last[1] > cur[1] ? last[1] : cur[1] // 相邻两个数组，谁的最大值更大就取谁
+            //         newIntervals[index] = [left, right]
+            //     } else {
+            //         newIntervals.push(cur)
+            //     }
+            // })
+            // return newIntervals
+
+            // 方式三： ------------ 太繁琐 TODO -------------
+            // // Step 1: 数组排序
+            // intervals.sort((a, b) => a[0] - b[0])
+            // // Step 2: 数组扁平化
+            // let flatIntervals = intervals.flat();
+            // console.log(flatIntervals) // [[1,3], [2,4], [6,8]] --> [1,3,2,4,6,8]
+            // // Step 3: 
+            // // 遍历扁平化数组
+            // // 下标（index)为偶数（curEnd值）时，如果该 “curEnd值“ 大于或等于 index+1 的值（NextStart值）时，则 “curEnd值“ 和 “NextStart值” 均删除掉
+            // let deleteIndexs = [];
+            // // [1, 3, 2, 6, 8, 10, 15, 18]
+            // // [1,4,2,3]
+            // flatIntervals.map((item, index) => {
+            //     // let prevItem = flatIntervals[index - 1];
+            //     let nextItem = flatIntervals[index + 1];
+            //     let nextNextItem = flatIntervals[index + 2]; // ？？？？？
+            //     if (index%2 === 1 && nextItem && (item > nextItem || item === nextItem) && (item < nextNextItem || item === nextNextItem)) {
+            //         index > 0 ? deleteIndexs.push(index, index+1) : null;
+            //     }
+            // })
+            // let newIntervals = flatIntervals.filter((item, index) => {
+            //     return !deleteIndexs.includes(index)
+            // })
+            // console.log('deleteIndexs: ', deleteIndexs)
+            // // console.log('newIntervals: ', newIntervals)
+            // let returnRes = []
+            // newIntervals.map((item, index) => {
+            //     index % 2 === 0 ? (returnRes.push([newIntervals[index], newIntervals[index+1]])) : null
+            // })
+            // return returnRes
+        };
+
+        let result = merge(intervals);
+        console.log('Result: ', result)
+       
+    </script>
+</body>
+</html>

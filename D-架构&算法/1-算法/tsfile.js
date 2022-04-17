@@ -1,1 +1,1 @@
-module.exports = {"ts_1":"./src/1_初识算法.ts","ts_2":"./src/2_异或的用法.ts","ts_3":"./src/3_xxx.ts","ts_4":"./src/4_选择排序的实现.ts","ts_5":"./src/5_冒泡排序的实现.ts","ts_6":"./src/6_插入排序的实现.ts","ts_index":"./src/index_main.ts"}
+module.exports = {"ts_1":"./src/1_初识算法.ts","ts_2":"./src/2_异或的用法.ts","ts_3":"./src/3_异或用法之消消乐.ts","ts_4":"./src/4_选择排序的实现.ts","ts_5":"./src/5_冒泡排序的实现.ts","ts_6":"./src/6_插入排序的实现.ts","ts_7":"./src/7_二分法的详解与拓展.ts","ts_8":"./src/8_对数器的概念和使用.ts","ts_index":"./src/index_main.ts"}
