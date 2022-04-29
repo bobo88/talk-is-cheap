@@ -13,8 +13,8 @@
   // interface NumberArray {
   //   [index: number]: number
   // }
-  
-  // 希尔排序
+
+  // 插入排序
 
   let arr: number[] = [1, 2, 3, 4, 5, 6, 8, 9];
   let target: number = 7;
@@ -25,7 +25,5 @@
       // xx
     }
   }
-
   insertSort(arr, target)
-  console.log(12)
 })()
