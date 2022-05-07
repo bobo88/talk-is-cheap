@@ -16,13 +16,20 @@
         // return tempRes.length > 0 ? Math.max(...tempRes) : 0;
 
         // 方法二：动态规划
-        let len = prices.length;
-        // 假设第一天买入
+        // let min = prices[0];
+        // let max = 0;
+        // prices.forEach(x => {
+        //     min = Math.min(x, min);
+        //     max = Math.max(x - min, max);
+        // })
+        // return max
+
+        // 方法三： 动态规划
         let min = prices[0];
         let max = 0;
         prices.forEach(x => {
-            min = Math.min(min, x);
-            max = Math.max(max, x - min);
+            x < min ? min = x : null;
+            x - min > max ? max = x - min : null;
         })
         return max
     };
