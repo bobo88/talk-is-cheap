@@ -8,8 +8,8 @@
     + Todo
     + ...
     + 学习成本：
-    + 特点：*<font color="#00BFFF">Todo</font>*
-+ uni-app:  
+    + 特点：*<font color="#00BFFF">单个平台无法多端，todo</font>*
++ <font color="#FF6600" size="3">uni-app</font>:  
     + 官网地址：https://uniapp.dcloud.io/
     + 开发者：DCloud
     + 技术栈： Vue
@@ -34,7 +34,7 @@
             + 发布为小程序：
             + Other......
         + xx
-+ taro: 
++ <font color="#FF6600" size="3">taro</font>: 
     + 官网地址： https://taro.jd.com/
     + 开发者：京东
     + 技术栈： React / Vue
