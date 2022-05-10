@@ -9,6 +9,9 @@
      * 输入：head = [1,1,2,3,3]
      * 输出：[1,2,3]
      * 
+     * 提示：链表中节点数目在范围 [0, 300] 内
+        -100 <= Node.val <= 100
+        题目数据保证链表已经按升序 排列
      */
 
     /**
@@ -23,7 +26,37 @@
         }
     }
     function deleteDuplicates(head: ListNode | null): ListNode | null {
-        // 方法一：双指针迭代 ? todo
+        // 方法一：哈希Set
+        // if (!head) {
+        //     return head;
+        // }
+        // const set = new Set();
+        // const prevHead = new ListNode(0);
+        // let prev = prevHead;
+        // while(head) {
+        //     if (set.has(head.val)) {
+        //         prev.next = null
+        //     } else {
+        //         set.add(head.val)
+        //         prev.next = head
+        //         prev = prev.next
+        //     }
+        //     head = head.next
+        // }
+        // return prevHead.next
+
+        // 方法二： 遍历法（官方）
+        if (!head) {
+            return head
+        }
+        let cur = head;
+        while(cur.next) {
+            if (cur.val === cur.next.val) {
+                cur.next = cur.next?.next
+            } else {
+                cur = cur.next
+            }
+        }
         return head
     };
 
