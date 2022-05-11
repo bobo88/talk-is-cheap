@@ -21,27 +21,29 @@
         [null, null, null, 1, 1, false]
      * 
      * 进阶：你能否实现每个操作均摊时间复杂度为 O(1) 的队列？换句话说，执行 n 个操作的总时间复杂度为 O(n) ，即使其中一个操作可能花费较长时间。
-     */
+    */
 
+    // 方法一： 
     class MyQueue {
+       public inStack: number[]
         constructor() {
-    
+            this.inStack = [];
         }
     
         push(x: number): void {
-    
+            this.inStack.push(x)
         }
     
-        pop(): number {
-    
+        pop(): number | null {
+            return this.inStack.shift() || null
         }
     
-        peek(): number {
-    
+        peek(): number | null {
+            return this.inStack[0]
         }
     
         empty(): boolean {
-    
+            return this.inStack.length === 0
         }
     }
     /**
