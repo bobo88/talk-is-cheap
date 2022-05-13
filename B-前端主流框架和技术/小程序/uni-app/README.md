@@ -26,6 +26,7 @@
     ├─manifest.json         配置应用名称、appid、logo、版本等打包信息，详见  
     ├─pages.json            配置页面路由、导航条、选项卡等页面类信息，详见  
     └─uni.scss              这里是uni-app内置的常用样式变量   
+    
 1. 【页面介绍】：
     + `.vue` / `.nvue`：区别是uni-app发行到app平台时，.vue文件会使用webview来渲染，而.nvue会使用原生渲染。
     + 【新建页面】：HBuilderX会自动在`pages.json`中完成页面注册（一步操作）。
@@ -37,7 +38,7 @@
     + 【页面通讯】：uni.$emit / uni.$on / uni.$once / uni.$off / 
     + 【路由】： uni-app 有两种页面路由跳转方式：使用navigator组件跳转、调用API跳转。
     + 【页面栈】：
-    + 【】：
+    + 【组件生命周期】：uni-app 组件支持的生命周期，与vue标准组件的生命周期相同。
 
 1. xxxx
 1. xxxx
