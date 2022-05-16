@@ -1,9 +1,11 @@
 ;(function(){
     /**
-     * 144. 二叉树的前序遍历
+     * 144. 二叉树的前序遍历 -------- 【根节点——左子树——右子树】
+     * 概念： 考察到一个节点后，即刻输出该节点的值，并继续遍历其左右子树。(根左右)
+     * --------------------------------------------------------------------------------------------------
      * 给你二叉树的根节点 root ，返回它节点值的 前序 遍历。
      * 【概念】二叉树的前序遍历： 
-     *  按照访问 根节点——左子树——右子树 的方式遍历这棵树，而在访问左子树或者右子树的时候，
+     *  按照访问 【根节点——左子树——右子树】 的方式遍历这棵树，而在访问左子树或者右子树的时候，
      *  我们按照同样的方式遍历，直到遍历完整棵树。
      * 
      * 输入：root = [1,null,2,3]
@@ -68,6 +70,27 @@
         return res
 
         // 方法三：Morris 遍历
+        // todo......
+
+        // 方法四： 颜色标记法-一种通用且简明的树遍历方法
+        /**
+         * class Solution:
+                def inorderTraversal(self, root: TreeNode) -> List[int]:
+                    WHITE, GRAY = 0, 1
+                    res = []
+                    stack = [(WHITE, root)]
+                    while stack:
+                        color, node = stack.pop()
+                        if node is None: continue
+                        if color == WHITE:
+                            stack.append((WHITE, node.right))
+                            stack.append((GRAY, node))
+                            stack.append((WHITE, node.left))
+                        else:
+                            res.append(node.val)
+                    return res
+
+         */
     };
 
 })()
