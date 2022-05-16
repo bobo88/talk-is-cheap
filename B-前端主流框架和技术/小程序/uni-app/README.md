@@ -40,25 +40,22 @@
     + 【页面栈】：
     + 【组件生命周期】：uni-app 组件支持的生命周期，与vue标准组件的生命周期相同。
 
-1. xxxx
-1. xxxx
-1. xxxx
-1. xxxx
-1. xxxx
-1. xxxx
-1. xxxx
-1. xxxx
-1. xxxx
+1. 【互相引用】：
+    + 引用组件：导入-注册-使用（vue3.x之前）， 导入-使用（setup语法糖），直接使用（uni-app）。
+
+1. 【高效开发技巧】：
+1. todo
 #### 二、全局文件：
-1. xxxx
-1. xxxx
-1. xxxx
-1. xxxx
+1. 【pages.json】页面路由：
+1. 【package.json】：
+1. 【vue.config.js】：
+1. 【uni.scss】：
+1. 【App.vue】：
+1. 【main.js】：
 #### 三、组件：
-1. xxxx
-1. xxxx
-1. xxxx
-1. xxxx
+1. 【内置组件】：
+1. 【拓展组件】(uni-ui)：
+1. todo
 #### 四、插件：
 1. xxxx
 1. xxxx
