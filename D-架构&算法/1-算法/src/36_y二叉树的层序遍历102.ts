@@ -26,8 +26,9 @@
 
     function levelOrder(root: TreeNode | null): number[][] {
         // 方法一：递归（竟然被我蒙对了）
-        let res: number[][] = []
+        let res: number[][] = [];
         let index = 0;
+        // 这里还可以加一些临界条件判断，提高代码性能，比如： if(!root) return res 等
         function preorder (root: TreeNode | null, index: number) {
             if (!root) return;
             !res[index] ? res[index] = [] : null;
