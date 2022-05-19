@@ -52,6 +52,7 @@
         // return helper(root, k)
 
         // 方法三：深度优先搜索 + 中序遍历 + 双指针
+        // ========= 搜索树 + 中序遍历 = 有序数组。
         const list: number[] = [];
         const inorderTraversal = (root: TreeNode | null) => {
             if (!root) {

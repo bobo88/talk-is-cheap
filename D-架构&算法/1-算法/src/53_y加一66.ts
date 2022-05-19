@@ -8,10 +8,42 @@
      */
 
     function plusOne(digits: number[]): number[] {
-        return []
+        // 方法一：ERROR - 超过最大安全数就会报错
+        // let getNumStr = (+digits.join('') + 1) + ''
+        // return getNumStr.split('').map(i => +i)
+
+        // 方法二：遍历
+        let isOverTen = false;
+        let isAdd = false;
+        let len = digits.length - 1;
+        for(let i = len; i >= 0; i--) {
+            if (!isAdd) {
+                let cur = digits[i];
+                if (++cur > 9) {
+                    digits[i] = 0;
+                    isOverTen = true;
+                    isAdd = false
+                } else {
+                    digits[i] = cur
+                    isAdd = true
+                }
+            }
+        }
+        !isAdd ? digits.unshift(1) : null;
+        return digits
+
+        // 方法三：
+    
     };
     
-    let arr = [0,0,1,1,1,2,2,3,3,4];
-    console.log(plusOne(arr))
+    let arr0 = [9];
+    console.log(plusOne(arr0))
+    // let arr = [1,1,2,2,3,3,4];
+    // console.log(plusOne(arr))
+    // let arr2 = [2, 9];
+    // console.log(plusOne(arr2))
+    // let arr3 = [6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3];
+    // console.log(plusOne(arr3))
+
        
 })()
