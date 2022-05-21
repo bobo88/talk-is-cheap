@@ -1,38 +1,40 @@
 ;(function(){
     /**
-     * 48. 旋转图像
-     * 给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
-     * 你必须在 原地 旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要 使用另一个矩阵来旋转图像。
+     * 268. 丢失的数字
+     * 给定一个包含 [0, n] 中 n 个数的数组 nums ，找出 [0, n] 这个范围内没有出现在数组中的那个数。
      * 
-     * 输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
-     * 输出：[[7,4,1],[8,5,2],[9,6,3]]
+     * 输入：nums = [3,0,1]
+     * 输出：2
+     * 解释：n = 3，因为有 3 个数字，所以所有的数字都在范围 [0,3] 内。2 是丢失的数字，因为它没有出现在 nums 中。
      * 
-     * 输入：matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
-     * 输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+     * 输入：nums = [0,1]
+     * 输出：2
+     * 解释：n = 2，因为有 2 个数字，所以所有的数字都在范围 [0,2] 内。2 是丢失的数字，因为它没有出现在 nums 中。
+     * 
+     * 输入：nums = [9,6,4,2,3,5,7,0,1]
+     * 输出：8
+     * 解释：n = 9，因为有 9 个数字，所以所有的数字都在范围 [0,9] 内。8 是丢失的数字，因为它没有出现在 nums 中。
+     * 
+     * 输入：nums = [0]
+     * 输出：1
+     * 解释：n = 1，因为有 1 个数字，所以所有的数字都在范围 [0,1] 内。1 是丢失的数字，因为它没有出现在 nums 中。
      * 
      */
 
-    function rotate(matrix: number[][]): void {
-        // 方法一： 上下交换 & 对角线交换
-        let len = matrix.length;
-        for(let i = 0; i < len / 2; i++) {
-            let temp = matrix[i]
-            matrix[i] = matrix[len - 1 - i]
-            matrix[len - 1 - i] = temp
-        }
-        // console.log(matrix)
-        for(let i = 0; i < len; i++) {
-            for(let j = i + 1; j < len; ++j) {
-                let temp = matrix[i][j]
-                matrix[i][j] = matrix[j][i]
-                matrix[j][i] = temp
+    function missingNumber(nums: number[]): number {
+        // 方法一：
+        let len = nums.length;
+        let sortNums = nums.sort((a, b) => a - b)
+        for(let i = 0; i < sortNums.length; i++) {
+            if (i !== sortNums[i]) {
+                return i
             }
         }
-        console.log(matrix)
+        return len
     };
+    
+    let nums = [9,6,4,2,3,5,7,0,1]
+    console.log(missingNumber(nums))
 
-    let matrix = [[1,2,3],[4,5,6],[7,8,9]]
-    rotate(matrix)
-    // console.log(matrix)
 
 })()
