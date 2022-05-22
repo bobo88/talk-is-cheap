@@ -23,14 +23,49 @@
 
     function missingNumber(nums: number[]): number {
         // 方法一：
-        let len = nums.length;
-        let sortNums = nums.sort((a, b) => a - b)
-        for(let i = 0; i < sortNums.length; i++) {
-            if (i !== sortNums[i]) {
-                return i
-            }
+        // let len = nums.length;
+        // nums.sort((a, b) => a - b)
+        // for(let i = 0; i < len; i++) {
+        //     if (i !== nums[i]) {
+        //         return i
+        //     }
+        // }
+        // return len
+
+        // 方法二： ------ 比方法一更耗时 ----------
+        // let len = nums.length;
+        // for (let i = 0; i < len; i++) {
+        //     if (!nums.includes(i)) {
+        //         return i
+        //     }
+        // }
+        // return len
+
+        // 方法三；哈希
+        // const set = new Set();
+        // const len = nums.length;
+        // for(let i = 0; i < len; i++) {
+        //     set.add(nums[i])
+        // }
+        // for(let j = 0; j <= len; j++) {
+        //     if (!set.has(j)) {
+        //         return j
+        //         break;
+        //     }
+        // }
+        // return -1
+
+        // 方法四：位运算
+
+        // 方法五；数学（高斯求和）
+        const n: number = nums.length;
+        const total: number = Math.floor(n * (n + 1) / 2);
+        let addSum: number = 0;
+        for(let i = 0; i < n; i++) {
+            addSum += nums[i]
         }
-        return len
+        return total - addSum
+
     };
     
     let nums = [9,6,4,2,3,5,7,0,1]
