@@ -14,6 +14,33 @@
 
     function addBinary(a: string, b: string): string {
         // 方法一：
+        // let aLen = a.length;
+        // let bLen = b.length;
+        // let res: string[] = [];
+        // let isEnter: number = 0;
+        // while (aLen > 0 || bLen > 0 || isEnter) {
+        //     let numA = +(a.charAt(aLen - 1) || '0');
+        //     let numB = +(b.charAt(bLen - 1) || '0');
+        //     if (numA + numB + isEnter === 3) {
+        //         res.unshift('1')
+        //         isEnter = 1;
+        //     } else if (numA + numB + isEnter === 2) {
+        //         res.unshift('0')
+        //         isEnter = 1;
+        //     } else if (numA + numB + isEnter === 1) {
+        //         res.unshift('1')
+        //         isEnter = 0;
+        //     } else {
+        //         // 全部等于0
+        //         res.unshift('0');
+        //         isEnter = 0;
+        //     }
+        //     aLen--;
+        //     bLen--;
+        // }
+        // return res.join('')
+
+        // 方法二：优化方法一
         let aLen = a.length;
         let bLen = b.length;
         let res: string[] = [];
@@ -21,14 +48,11 @@
         while (aLen > 0 || bLen > 0 || isEnter) {
             let numA = +(a.charAt(aLen - 1) || '0');
             let numB = +(b.charAt(bLen - 1) || '0');
-            // a b相等时（00或11），不相等时直接往 res 头部插入'1'
-            if (numA + numB + isEnter === 3) {
-                res.unshift('1')
+            let addRes = numA + numB + isEnter; // 结果只有 0 1 2 3 四种情况
+            if (addRes > 1) {
+                res.unshift(addRes % 2 === 1 ? '1' : '0')
                 isEnter = 1;
-            } else if (numA + numB + isEnter === 2) {
-                res.unshift('0')
-                isEnter = 1;
-            } else if (numA + numB + isEnter === 1) {
+            } else if (addRes === 1) {
                 res.unshift('1')
                 isEnter = 0;
             } else {
@@ -39,7 +63,6 @@
             aLen--;
             bLen--;
         }
-        // console.log(res)
         return res.join('')
     };
 
