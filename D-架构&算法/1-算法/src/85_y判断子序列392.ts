@@ -19,32 +19,42 @@
 
     function isSubsequence(s: string, t: string): boolean {
         // 方法一：
-        // 思路：遍历字符串s（比如abc），需要满足 a 的所有下标中必须有一个小于 b， b的所有下标中必须有一个小于 c。
-        let tArr: string[] = t.split('');
-        let sLen = s.length;
-        let arr: number[][] = [];
-        for (let i = 0; i < sLen; i++) {
-            let tempArr: number[] = [];
-            tArr.forEach((item, index) => {
-                if (item === s[i]) {
-                    tempArr.push(index)
-                }
-            })
-            arr.push(tempArr)
+        // // 思路：遍历字符串s（比如abc），需要满足 a 的所有下标中必须有一个小于 b， b的所有下标中必须有一个小于 c。
+        // let tArr: string[] = t.split('');
+        // let sLen = s.length;
+        // let arr: number[][] = [];
+        // for (let i = 0; i < sLen; i++) {
+        //     let tempArr: number[] = [];
+        //     tArr.forEach((item, index) => {
+        //         if (item === s[i]) {
+        //             tempArr.push(index)
+        //         }
+        //     })
+        //     arr.push(tempArr)
+        // }
+        // if (arr[0] && arr[0].length === 0) return false
+        // // 2. 遍历二维数组
+        // let curMinIndex: number = arr[0] ? Math.min(...arr[0]) : 0;
+        // for (let j = 1; j < arr.length; j++) {
+        //     // 上一个的最小下标值
+        //     let filterMoreThan = arr[j].filter(item => item > curMinIndex);
+        //     if (filterMoreThan && filterMoreThan.length > 0) {
+        //         curMinIndex = Math.min(...filterMoreThan)
+        //     } else {
+        //         return false
+        //     }
+        // }
+        // return true
+
+        // 方法二：双指针
+        let n = s.length, m = t.length;
+        let i = 0, j = 0;
+        while (i < n && j < m) {
+            s[i] === t[j] && i++;
+            j++
         }
-        if (arr[0] && arr[0].length === 0) return false
-        // 2. 遍历二维数组
-        let curMinIndex: number = arr[0] ? Math.min(...arr[0]) : 0;
-        for (let j = 1; j < arr.length; j++) {
-            // 上一个的最小下标值
-            let filterMoreThan = arr[j].filter(item => item > curMinIndex);
-            if (filterMoreThan && filterMoreThan.length > 0) {
-                curMinIndex = Math.min(...filterMoreThan)
-            } else {
-                return false
-            }
-        }
-        return true
+        return i === n
+
     };
 
     const s = "abc", t = "ahbgdc";
