@@ -18,22 +18,32 @@
      */
 
     function findLHS(nums: number[]): number {
-        // 方法一：枚举
-        nums.sort((a, b) => a - b);
-        let s = 0;
-        let res = 0;
-        for (let e = 0; e < nums.length; e++) {
-            while (nums[e] - nums[s] > 1) {
-                s++
-            }
-            if (nums[e] - nums[s] === 1) {
-                res = Math.max(res, e - s + 1)
-            }
-        }
-        return res
+        // 方法一：枚举？滑动窗口？
+        // nums.sort((a, b) => a - b);
+        // let s = 0;
+        // let res = 0;
+        // for (let e = 0; e < nums.length; e++) {
+        //     while (nums[e] - nums[s] > 1) {
+        //         s++
+        //     }
+        //     if (nums[e] - nums[s] === 1) {
+        //         res = Math.max(res, e - s + 1)
+        //     }
+        // }
+        // return res
 
         // 方法二： 哈希表
-
+        let cns = new Map();
+        let res = 0;
+        for (const num of nums) {
+            cns.set(num, (cns.get(num) || 0) + 1)
+        }
+        cns.forEach((value: number, key: number) => {
+            if (cns.get(key + 1)) {
+                res = Math.max(res, cns.get(key) + cns.get(key + 1))
+            }
+        })
+        return res
     };
 
     const nums = [1,3,2,2,5,2,3,7];
