@@ -28,16 +28,6 @@
                 start = mid + 1;
             }
         }
-        // let mid = Math.floor(nums.length / 2);
-        // if (nums[mid] === target) return mid;
-        // while (mid > 0) {
-        //     if (target > nums[mid]) {
-        //         start = mid;
-        //         search(nums[start, end], target)
-        //     } else {
-
-        //     }
-        // }
         return -1;
     };
     
